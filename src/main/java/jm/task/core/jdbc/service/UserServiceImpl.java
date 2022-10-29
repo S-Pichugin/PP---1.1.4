@@ -5,35 +5,41 @@ import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 
-import javax.persistence.Id;
 import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-//    private UserDao userDao = new UserDaoJDBCImpl();
-    private UserDao userDao = new UserDaoHibernateImpl();
+    private UserDao userDao = new UserDaoJDBCImpl();
+    private UserDao hibernateUserDao = new UserDaoHibernateImpl();
 
     public void createUsersTable() {
-        userDao.createUsersTable();
+//        userDao.createUsersTable();
+        hibernateUserDao.createUsersTable();
     }
 
     public void dropUsersTable() {
-        userDao.dropUsersTable();
+//        userDao.dropUsersTable();
+        hibernateUserDao.dropUsersTable();
     }
 
     public void saveUser(String name, String lastName, byte age) throws SQLException {
-        userDao.saveUser(name,lastName,age);
+//        userDao.saveUser(name,lastName,age);
+        hibernateUserDao.saveUser(name, lastName, age);
     }
 
     public void removeUserById(long id) {
-        userDao.removeUserById(id);
+//        userDao.removeUserById(id);
+        hibernateUserDao.removeUserById(id);
     }
 
     public List<User> getAllUsers() {
-        return userDao.getAllUsers();
+//        return userDao.getAllUsers();
+        return hibernateUserDao.getAllUsers();
     }
 
     public void cleanUsersTable() {
-        userDao.cleanUsersTable();
+
+//        userDao.cleanUsersTable();
+        hibernateUserDao.cleanUsersTable();
     }
 }
